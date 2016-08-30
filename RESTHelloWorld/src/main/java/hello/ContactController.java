@@ -50,7 +50,7 @@ public class ContactController {
 
     @RequestMapping(value = "/contact/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Contact> updateContact(@PathVariable("id") long id, @RequestBody Contact contact) {
-        if (!contacts.containsKey(contact.getId())) {
+        if (!contacts.containsKey(id)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 

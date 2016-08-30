@@ -8,11 +8,23 @@
  * Controller of the contactsAppApp
  */
 angular.module('contactsAppApp')
-  .controller('MainCtrl', ['$scope', 'menuFactory', function ($scope, menuFactory) {
-    $scope.contact = {id: 0, name: '', surname: '', phone: '', email: ''};
+  .controller('MainCtrl', ['$scope', 'contactFactory', function($scope, contactFactory) {
+      var contactsList = contactFactory.query();
+
+      var contactDatasource = {};
+      contactDatasource.get = function(index, count, success) {
+        var result = contactsList.slice(index, count);
+
+        return success(result);
+      };
+
+      $scope.contactDatasource = contactDatasource;
+  }])
+  .controller('ContactCtrl', ['$scope', 'contactFactory', function ($scope, contactFactory) {
+    $scope.contact = {id: 0, image: '', name: '', surname: '', phone: '', email: ''};
 
     $scope.addContact = function () {
-      menuFactory
+      contactFactory
         .save($scope.contact,
           function (response) {
             console.log("Contact saved " + response);
@@ -23,5 +35,5 @@ angular.module('contactsAppApp')
             console.log("Error saving contact: " + response.status);
           }
         );
-    }
+    };
   }]);

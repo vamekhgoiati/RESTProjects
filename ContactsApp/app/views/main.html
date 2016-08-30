@@ -1,31 +1,25 @@
-<form id="addContactForm" name="addContactForm" class="form-horizontal" ng-submit="addContact()">
-  <div class="form-group">
-    <label for="inputName" class="col-sm-2 control-label">Name</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="contact.name">
+<div class="row">
+  <div class="btn-group col-sm-offset-2">
+    <a type="button" class="btn btn-default" aria-label="Add Contact" ui-sref="app.contact">
+      <span class="glyphicon glyphicon-plus"></span>
+    </a>
+  </div>
+<div ui-scroll-viewport class="viewport col-sm-offset-2 col-sm-8">
+  <div class="media" ui-scroll="contact in contactDatasource">
+    <div class="media-left media-middle">
+      <img class="media-object img-thumbnail"
+           ng-src={{contact.image}} alt="{{contact.name}}" height="64" width="64">
+    </div>
+    <div class="media-body">
+      <h2 class="media-heading">
+        {{contact.name}} {{contact.surname}}
+      </h2>
+      <address>
+        <i class="fa fa-phone"></i>: {{contact.phone}}<br>
+        <i class="fa fa-envelope"></i>:
+        <a href="mailto:{{contact.email}}">{{contact.email}}</a>
+      </address>
     </div>
   </div>
-  <div class="form-group">
-    <label for="inputSurname" class="col-sm-2 control-label">Surname</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputSurname" placeholder="Surname" ng-model="contact.surname">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputPhone" class="col-sm-2 control-label">Phone</label>
-    <div class="col-sm-10">
-      <input type="tel" class="form-control" id="inputPhone" placeholder="Phone" ng-model="contact.phone">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail" placeholder="Email" ng-model="contact.email">
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Save</button>
-    </div>
-  </div>
-</form>
+</div>
+</div>
