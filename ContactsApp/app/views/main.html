@@ -7,8 +7,10 @@
 <div ui-scroll-viewport class="viewport col-sm-offset-2 col-sm-8">
   <div class="media" ui-scroll="contact in contactDatasource">
     <div class="media-left media-middle">
-      <img class="media-object img-thumbnail"
-           ng-src={{contact.image}} alt="{{contact.name}}" height="64" width="64">
+        <a ui-sref="app.contact.edit({id:contact.id})">
+          <img class="media-object img-thumbnail"
+             ng-src={{contact.image}} alt="{{contact.name}}" height="64" width="64">
+        </a>
     </div>
     <div class="media-body">
       <h2 class="media-heading">

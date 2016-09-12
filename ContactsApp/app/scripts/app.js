@@ -27,6 +27,16 @@ angular.module('contactsAppApp', ['ui.router', 'ngResource', 'ui.scroll', 'ui.sc
           }
         }
 
+      })
+      .state('app.contact.edit', {
+        url: '/:id',
+        views: {
+          'content@': {
+            templateUrl: 'views/contact.html',
+            controller: 'EditContactController'
+          }
+        }
+
       });
 
     $urlRouterProvider.otherwise('/');

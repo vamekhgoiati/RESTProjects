@@ -10,6 +10,7 @@ public class Contact {
     private String surname;
     private String phone;
     private String email;
+    private String image;
 
     public long getId() {
         return id;
@@ -49,5 +50,13 @@ public class Contact {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    
+    public void setImage(String image) {
+	this.image = image;
+    }
+
+    public String getImage(){
+	return image;
     }
 }
