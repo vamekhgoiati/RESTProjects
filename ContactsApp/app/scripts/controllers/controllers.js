@@ -46,6 +46,7 @@ angular.module('contactsAppApp')
   }])
   .controller('EditContactController', ['$scope', '$stateParams', 'contactFactory', function($scope, $stateParams, contactFactory) {
 
+    $scope.isEdit = true;
     contactFactory.get({id: parseInt($stateParams.id, 10)})
     .$promise.then(
       function(response) {
@@ -60,4 +61,9 @@ angular.module('contactsAppApp')
       contactFactory.update({id: $scope.contact.id}, $scope.contact);
       console.log("Contact saved " + $scope.contact);
     };
+
+    $scope.deleteContact = function() {
+      contactFactory.delete({id:$scope.contact.id});
+      console.log("Contact Deleted")
+    }
   }]);
